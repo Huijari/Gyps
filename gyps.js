@@ -26,7 +26,8 @@ const Gyps = _ => {
     return gyps;
   };
 
-  /* Constant
+  /* Map all values to a constant.
+   * @param value Constant that will be emitted
    */
   gyps.constant = value => gyps.map(_ => value);
 
