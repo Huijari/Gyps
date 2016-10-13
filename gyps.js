@@ -92,7 +92,8 @@ const Gyps = _ => {
     return trigger;
   };
 
-  /* Wrap
+  /* Wrap each value into an object with the key provided.
+   * @param key Key used to wrap values
    */
   gyps.wrap = key => gyps.map(value => ({ [key]: value }));
 
