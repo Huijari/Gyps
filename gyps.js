@@ -68,7 +68,10 @@ const Gyps = _ => {
     return merge;
   };
 
-  /* Scan
+  /* Accumulate values using a function.
+   * @param reducer Function that receives the accumulated value and a new
+   *   value, and return the new accumulated
+   * @param initial Initial value
    */
   gyps.scan = (reducer, initial) => {
     const scan = Gyps();
