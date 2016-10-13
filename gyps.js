@@ -2,10 +2,16 @@ const Gyps = _ => {
   const gyps = Object.create(null);
 
   let last;
+
+  /* Emit
+   */
   gyps.emit = data => {
     last = data;
     return gyps;
   };
+
+  /* Observe
+   */
   gyps.observe = observer => {
     last ? observer(last) : null;
     const emit = gyps.emit;
@@ -17,26 +23,36 @@ const Gyps = _ => {
     return gyps;
   };
 
+  /* Constant
+   */
   gyps.constant = value => gyps.map(_ => value);
 
+  /* Filter
+   */
   gyps.filter = predicate => {
     const filter = Gyps();
     gyps.observe(data => predicate(data) && filter.emit(data));
     return filter;
   };
 
+  /* Flatten
+   */
   gyps.flatten = _ => {
     const flatten = Gyps();
     gyps.observe(stream => stream.observe(data => flatten.emit(data)));
     return flatten;
   };
 
+  /* Map
+   */
   gyps.map = mapper => {
     const map = Gyps();
     gyps.observe(data => map.emit(mapper(data)));
     return map;
   };
 
+  /* Merge
+   */
   gyps.merge = (...streams) => {
     const merge = Gyps();
     [gyps, ...streams]
@@ -44,6 +60,8 @@ const Gyps = _ => {
     return merge;
   };
 
+  /* Scan
+   */
   gyps.scan = (reducer, initial) => {
     const scan = Gyps();
     let value = initial;
@@ -51,6 +69,8 @@ const Gyps = _ => {
     return scan;
   };
 
+  /* Trigger
+   */
   gyps.trigger = value$ => {
     const trigger = Gyps();
     let value;
@@ -59,6 +79,8 @@ const Gyps = _ => {
     return trigger;
   };
 
+  /* Wrap
+   */
   gyps.wrap = key => gyps.map(value => ({ [key]: value }));
 
   return gyps;
