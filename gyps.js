@@ -40,7 +40,8 @@ const Gyps = _ => {
     return filter;
   };
 
-  /* Flatten
+  /* Transform a observable of observables into a observable of values emitted
+   * by values of the original observable.
    */
   gyps.flatten = _ => {
     const flatten = Gyps();
