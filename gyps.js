@@ -58,7 +58,8 @@ const Gyps = _ => {
     return map;
   };
 
-  /* Merge
+  /* Combine multiple observables into one.
+   * @param streams Observables to be joined
    */
   gyps.merge = (...streams) => {
     const merge = Gyps();
