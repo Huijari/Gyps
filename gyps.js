@@ -80,7 +80,9 @@ const Gyps = _ => {
     return scan;
   };
 
-  /* Trigger
+  /* Takes an observable of values, each time the original observable emits,
+   * this observable emits the last value emitted by the observable of values.
+   * @param value$ Observable of values to be emitted
    */
   gyps.trigger = value$ => {
     const trigger = Gyps();
