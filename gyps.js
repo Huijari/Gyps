@@ -3,7 +3,8 @@ const Gyps = _ => {
 
   let last;
 
-  /* Emit
+  /* Emit an event, calling all observers.
+   * @param data Data object to be used on calling observers
    */
   gyps.emit = data => {
     last = data;
