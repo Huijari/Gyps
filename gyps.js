@@ -11,7 +11,9 @@ const Gyps = _ => {
     return gyps;
   };
 
-  /* Observe
+  /* Add a new observer. If an event was emitted before, the observer is called
+   * with the last value.
+   * @param observer Observer function to be added
    */
   gyps.observe = observer => {
     last ? observer(last) : null;
