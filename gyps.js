@@ -49,7 +49,8 @@ const Gyps = _ => {
     return flatten;
   };
 
-  /* Map
+  /* Transform each value by a function.
+   * @param mapper Function that will be applied to each value
    */
   gyps.map = mapper => {
     const map = Gyps();
