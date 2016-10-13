@@ -31,7 +31,8 @@ const Gyps = _ => {
    */
   gyps.constant = value => gyps.map(_ => value);
 
-  /* Filter
+  /* Only emit values that pass the predicate.
+   * @param predicate Test function, returns true if pass
    */
   gyps.filter = predicate => {
     const filter = Gyps();
