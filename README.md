@@ -3,6 +3,18 @@
 
 ![logo.jpg](https://github.com/Huijari/Gyps/raw/master/logo.jpg)
 
+## Example
+> Slightly modified version of [xstream](https://github.com/staltz/xstream) example.
+```js
+const tick$ = Gyps();
+setInterval(tick$.emit, 1000); // Gpys doesn't provide event sources by design
+const number$ = tick$ // Base stream
+  .scan(count => count + 1, 0) // Increment every time
+  .filter(number => number % 2 === 0) // Only even numbers
+  .map(number => number * number) // Map to square
+  .observe(number => console.log(number)); // Log each number
+```
+
 ## API
 ### Gyps()
 Create a stream.
