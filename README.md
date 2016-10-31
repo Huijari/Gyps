@@ -48,6 +48,6 @@ Wrap each value into an object with the key provided.
 ## Meta
 This project is based on [eye](https://github.com/huijari/eye).
 
-Distributed under MIT license. See ``LICENSE`` for more information.
+Distributed under Apache license. See ``LICENSE`` for more information.
 
 [Huijari](https://github.com/Huijari)
