@@ -35,58 +35,117 @@
 <p>Cheap reactive programming library</p>
 </blockquote>
 
+<p><img src="https://github.com/Huijari/Gyps/raw/master/logo.jpg" alt="logo.jpg"></p>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
+
+<blockquote>
+<p>Slightly modified version of <a href="https://github.com/staltz/xstream">xstream</a> example.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">const</span> <span class="pl-c1">tick$</span> <span class="pl-k">=</span> <span class="pl-en">Gyps</span>();
+<span class="pl-c1">setInterval</span>(<span class="pl-smi">tick$</span>.<span class="pl-smi">emit</span>, <span class="pl-c1">1000</span>); <span class="pl-c">// Gpys doesn't provide event sources by design</span>
+<span class="pl-k">const</span> <span class="pl-c1">number$</span> <span class="pl-k">=</span> tick$ <span class="pl-c">// Base stream</span>
+  .<span class="pl-en">scan</span>(<span class="pl-smi">count</span> <span class="pl-k">=&gt;</span> count <span class="pl-k">+</span> <span class="pl-c1">1</span>, <span class="pl-c1">0</span>) <span class="pl-c">// Increment every time</span>
+  .<span class="pl-en">filter</span>(<span class="pl-smi">number</span> <span class="pl-k">=&gt;</span> number <span class="pl-k">%</span> <span class="pl-c1">2</span> <span class="pl-k">===</span> <span class="pl-c1">0</span>) <span class="pl-c">// Only even numbers</span>
+  .<span class="pl-en">map</span>(<span class="pl-smi">number</span> <span class="pl-k">=&gt;</span> number <span class="pl-k">*</span> number) <span class="pl-c">// Map to square</span>
+  .<span class="pl-c1">observe</span>(<span class="pl-smi">number</span> <span class="pl-k">=&gt;</span> <span class="pl-en">console</span>.<span class="pl-c1">log</span>(number)); <span class="pl-c">// Log each number</span></pre></div>
+</blockquote>
+
 <h2>
 <a id="api" class="anchor" href="#api" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>API</h2>
 
 <h3>
-<a id="emit" class="anchor" href="#emit" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Emit</h3>
+<a id="gyps-1" class="anchor" href="#gyps-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gyps()</h3>
+
+<p>Create a stream.</p>
+
+<h3>
+<a id="gypsemitdata" class="anchor" href="#gypsemitdata" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.emit(data)</h3>
 
 <p>Emit an event, calling all observers.</p>
 
+<blockquote>
+<p>param data Data object to be used on calling observers</p>
+</blockquote>
+
 <h3>
-<a id="observe" class="anchor" href="#observe" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Observe</h3>
+<a id="gypsobserveobserver" class="anchor" href="#gypsobserveobserver" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.observe(observer)</h3>
 
 <p>Add a new observer. If an event was emitted before, the observer is called with the last value.</p>
 
+<blockquote>
+<p>param observer Observer function to be added</p>
+</blockquote>
+
 <h3>
-<a id="constant" class="anchor" href="#constant" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Constant</h3>
+<a id="gypsconstantvalue" class="anchor" href="#gypsconstantvalue" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.constant(value)</h3>
 
 <p>Map all values to a constant.</p>
 
+<blockquote>
+<p>param value Constant that will be emitted</p>
+</blockquote>
+
 <h3>
-<a id="filter" class="anchor" href="#filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filter</h3>
+<a id="gypsfilterpredicate" class="anchor" href="#gypsfilterpredicate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.filter(predicate)</h3>
 
 <p>Only emit values that pass the predicate.</p>
 
+<blockquote>
+<p>param predicate Test function, returns true if pass</p>
+</blockquote>
+
 <h3>
-<a id="flatten" class="anchor" href="#flatten" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Flatten</h3>
+<a id="gypsflatten" class="anchor" href="#gypsflatten" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.flatten()</h3>
 
 <p>Transform a observable of observables into a observable of values emitted by values of the original observable.</p>
 
 <h3>
-<a id="map" class="anchor" href="#map" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Map</h3>
+<a id="gypsmapmapper" class="anchor" href="#gypsmapmapper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.map(mapper)</h3>
 
 <p>Transform each value by a function.</p>
 
+<blockquote>
+<p>param mapper Function that will be applied to each value</p>
+</blockquote>
+
 <h3>
-<a id="merge" class="anchor" href="#merge" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Merge</h3>
+<a id="gypsmergestream-stream" class="anchor" href="#gypsmergestream-stream" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.merge(stream[, stream])</h3>
 
 <p>Combine multiple observables into one.</p>
 
+<blockquote>
+<p>param streams Observables to be joined</p>
+</blockquote>
+
 <h3>
-<a id="scan" class="anchor" href="#scan" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Scan</h3>
+<a id="gypsscanreducer-initial" class="anchor" href="#gypsscanreducer-initial" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.scan(reducer, initial)</h3>
 
 <p>Accumulate values using a function.</p>
 
+<blockquote>
+<p>param reducer Function that receives the accumulated value and a new value, and return the new accumulated
+param initial Initial value</p>
+</blockquote>
+
 <h3>
-<a id="trigger" class="anchor" href="#trigger" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Trigger</h3>
+<a id="gypstriggerstream" class="anchor" href="#gypstriggerstream" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.trigger(stream)</h3>
 
 <p>Takes an observable of values, each time the original observable emits, this observable emits the last value emitted by the observable of values.</p>
 
+<blockquote>
+<p>param stream Observable of values to be emitted</p>
+</blockquote>
+
 <h3>
-<a id="wrap" class="anchor" href="#wrap" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Wrap</h3>
+<a id="gypswrapkey" class="anchor" href="#gypswrapkey" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>gyps.wrap(key)</h3>
 
 <p>Wrap each value into an object with the key provided.</p>
+
+<blockquote>
+<p>param key Key used to wrap values</p>
+</blockquote>
 
 <h2>
 <a id="meta" class="anchor" href="#meta" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Meta</h2>
