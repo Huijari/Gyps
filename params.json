@@ -1,0 +1,6 @@
+{
+  "name": "Gyps",
+  "tagline": "Cheap reactive programming library",
+  "body": "# Gyps\r\n> Cheap reactive programming library\r\n\r\n## API\r\n### Emit\r\nEmit an event, calling all observers.\r\n\r\n### Observe\r\nAdd a new observer. If an event was emitted before, the observer is called with the last value.\r\n\r\n### Constant\r\nMap all values to a constant.\r\n\r\n### Filter\r\nOnly emit values that pass the predicate.\r\n\r\n### Flatten\r\nTransform a observable of observables into a observable of values emitted by values of the original observable.\r\n\r\n### Map\r\nTransform each value by a function.\r\n\r\n### Merge\r\nCombine multiple observables into one.\r\n\r\n### Scan\r\nAccumulate values using a function.\r\n\r\n### Trigger\r\nTakes an observable of values, each time the original observable emits, this observable emits the last value emitted by the observable of values.\r\n\r\n### Wrap\r\nWrap each value into an object with the key provided.\r\n\r\n## Meta\r\nThis project is based on [eye](https://github.com/huijari/eye).\r\n\r\nDistributed under Apache license. See ``LICENSE`` for more information.\r\n\r\n[Huijari](https://github.com/Huijari)\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
