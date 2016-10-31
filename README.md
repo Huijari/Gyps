@@ -4,7 +4,7 @@
 ![logo.jpg](https://github.com/Huijari/Gyps/raw/master/logo.jpg)
 
 ## Example
-> Slightly modified version of [xstream](https://github.com/staltz/xstream) example.
+> Slightly modified version of [xstream](https://github.com/staltz/xstream)'s example.
 ```js
 const tick$ = Gyps();
 setInterval(tick$.emit, 1000); // Gpys doesn't provide event sources by design
@@ -60,7 +60,7 @@ Wrap each value into an object with the key provided.
 > param key Key used to wrap values
 
 ## Meta
-This project is based on [eye](https://github.com/huijari/eye).
+This project is based on [eye](https://github.com/huijari/eye), and the minified+gzip version has less than 1Kb.
 
 Distributed under Apache license. See ``LICENSE`` for more information.
 
