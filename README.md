@@ -1,7 +1,7 @@
 # Gyps
 > Cheap reactive programming library
 
-![logo.jpg](logo.jpg)
+![logo.jpg](https://github.com/Huijari/Gyps/raw/master/logo.jpg)
 
 ## API
 ### Gyps()
