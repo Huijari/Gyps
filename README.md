@@ -1,6 +1,8 @@
 # Gyps
 > Cheap reactive programming library
 
+![logo.jpg](logo.jpg)
+
 ## API
 ### Gyps()
 Create a stream.
